@@ -3,14 +3,56 @@
   to { filter: hue-rotate(360deg); }
 }
 
+body {
+  animation: wobble 0.2s alternate ease-in-out infinite !important;
+} /* rough day at sea huh */
+
+@keyframes wobble {
+   from { rotate: -0.2deg; }
+   to { rotate: 0.2deg; } 
+}
+
 @keyframes _nt  {
   to { background-position: 200% 50%; }
+}
+
+/* no more greyscale? No this just breaks visuals somehow*/
+.grayscale {
+  /* filter: none !important; */
+}
+
+.cm-ySelectionInfo {
+  &::before {
+   content: "❤";
+   padding-right: 4px; /* ok yea def works lel */
+  }
+}
+
+.cm-gutterElement {
+  filter: none !important;
+  background-color: rgba(0,0,0,.7) !important;
+}
+
+/* Space for the marquee */
+body {
+  &::before {
+    content: ".";
+    width: 100vw;
+    background-color: grey;
+    line-height: 1.5em;
+    color: grey;
+  }
+
+  & marquee {
+    padding-top: 2px;
+  }
 }
 
 :root.enable-the-funky-styling {
   & .grayscale
   {
-    animation: hues 20s linear infinite !important;
+    animation: hues 20s linear infinite,
+               wobble 5s alternate ease-in-out infinite !important;
   }
   
   & .cm-ySelectionInfo {
